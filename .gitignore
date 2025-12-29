@@ -1,0 +1,20 @@
+# Java
+**/target/
+**/.mvn/wrapper/maven-wrapper.jar
+
+# Rust
+**/target/
+
+# IDE
+**/.idea/
+**/.vscode/
+
+# OS
+.DS_Store
+
+# Env
+.env
+.env.*
+
+# Logs
+**/*.log

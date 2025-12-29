@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  infra-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate docker compose
+        run: docker compose -f opencore/infra/docker/docker-compose.yml config
+
+  gateway:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: opencore/gateway
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: opencore/gateway
+      - run: cargo test
+
+  auth-service:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: opencore/auth-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B -ntp test
+
+  user-service:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: opencore/user-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B -ntp test
+
+  billing-service:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: opencore/billing-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B -ntp test
+
+  notification-service:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: opencore/notification-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B -ntp test

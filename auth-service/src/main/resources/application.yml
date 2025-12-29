@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+opencore:
+  jwt:
+    issuer: opencore
+    # DEV ONLY. Replace with Kubernetes Secret / Vault in production.
+    secret: "dev-only-change-me-dev-only-change-me-dev-only-change-me"
+    accessTtlSeconds: 900
+    refreshTtlSeconds: 2592000
