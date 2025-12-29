@@ -11,7 +11,7 @@ This is a sponsor-ready, reproducible local demo that validates:
 ## Prereqs
 
 - Docker + Docker Compose
-- Java 21+
+- Java 17+
 - Rust stable
 - `curl`
 - `python3`
