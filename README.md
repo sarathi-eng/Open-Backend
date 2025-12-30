@@ -1,7 +1,7 @@
 # OpenCore Backend Platform
 
 [![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
-![Java](https://img.shields.io/badge/Java-21-informational)
+![Java](https://img.shields.io/badge/Java-17-informational)
 ![Rust](https://img.shields.io/badge/Rust-stable-informational)
 
 > Note: replace `OWNER/REPO` in the CI badge URL with your GitHub repo.
@@ -21,7 +21,7 @@ This repo is a monorepo containing:
 
 Prereqs:
 - Docker + Docker Compose
-- Java 21+
+- Java 17+
 - Rust stable
 
 Start infra:
